@@ -106,7 +106,8 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                SQL_query = "SELECT * FROM JUGADOR";
+                string mensaje = "1/" + parameter.Text;
+                SQL_query = "1/"+user+"/"+pass;
                 byte[] SQLserver = System.Text.Encoding.ASCII.GetBytes(SQL_query);                              
                 server.Send(SQLserver);
                 byte[] msg2 = new byte[80];

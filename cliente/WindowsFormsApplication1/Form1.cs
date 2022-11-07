@@ -106,17 +106,19 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                SQL_query = "SELECT * FROM JUGADOR";
+                //string mensaje = "1/" + parameter.Text;
+                SQL_query = "1/"+user+"/"+pass;
                 byte[] SQLserver = System.Text.Encoding.ASCII.GetBytes(SQL_query);                              
                 server.Send(SQLserver);
                 byte[] msg2 = new byte[80];
                 server.Receive(msg2);
                 answer = Encoding.ASCII.GetString(msg2);
-                if (answer == "1")
+                //int answerint = Convert.ToInt32(answer);
+                if (answer == "0")
                 {
                     MessageBox.Show("Bienvenido" + user + ", has iniciado sesión correctamente");
                 }
-                else 
+                else if (answer == "1")
                 {
                     MessageBox.Show("El nombre de usuario o contraseña son incorrectos o no existen");
                 }

@@ -8,16 +8,18 @@
 #include <mysql.h>
 #include <pthread.h>
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
 	int sock_conn, sock_listen, ret;
 	struct sockaddr_in serv_adr;
 	char peticion[512];
 	char respuesta[512];
+	char buff[512];
 	//INICIALITZACIONS
 	//Obrim el socket
-	if ((sock_listen = socket(AF_INET, SOCK_STREAM, 0)) < 0)
+	if ((sock_listen = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
 		printf("Error creant el socket");
+	}
 	// Fem el bind al port
 
 	memset(&serv_adr, 0, sizeof(serv_adr));// inicialitza a zero serv_addr
@@ -28,7 +30,7 @@ int main(int argc, char *argv[])
 	// escucharemos en el port 9050
 	serv_adr.sin_port = htons(9050);
 	if (bind(sock_listen, (struct sockaddr*)&serv_adr, sizeof(serv_adr)) < 0)
-		printf("Error al bind");
+		printf("Error al bind\n");
 	//La cola de peticiones pendientes no podr? ser superior a 4
 	if (listen(sock_listen, 2) < 0)
 		printf("Error en el Listen");
@@ -52,10 +54,10 @@ int main(int argc, char *argv[])
 
 		//Escribimos el nombre en la consola
 
-		printf("Se ha conectado: %s\n", buff);
+		printf("Se ha conectado: %s\n", peticion);
 
 
-		char *p = strtok(buff, "/");
+		char* p = strtok(peticion, "/");
 		int codigo = atoi(p);
 		p = strtok(NULL, "/");
 		char buff[20];
@@ -66,12 +68,19 @@ int main(int argc, char *argv[])
 		printf("Codigo: %d, Parametro: %s\n", codigo, buff, buff2);
 
 
-		if (codigo == 1) 
+		if (codigo == 1)
 		{
 			i = LogIn(buff, buff2);
-			if(i == 0) strcpy(respuesta,"Te has logeado correctamente")
-			else strcpy(respuesta,"No has podido iniciar sesión")
-			write(sock_conn, respuesta,strlen(respuesta));
+			if (i == 0) {
+				strcpy(respuesta, "0");
+				write(sock_conn, respuesta, strlen(respuesta));
+			}
+			else if (i == 1) {
+				strcpy(respuesta, "1");
+				write(sock_conn, respuesta, strlen(respuesta));
+			}
+			strcpy(respuesta, "fuckyoutunoentiende");
+			write(sock_conn, respuesta, strlen(respuesta));
 		}
 		else if (codigo == 2)
 		{
@@ -89,7 +98,7 @@ int LogIn(char username[20], char password[20])
 	MYSQL_RES* resultado;
 	MYSQL_ROW row;
 	char consulta[80];
-	char res[80];
+	/*char res[80];*/
 	//parte de mysql
 	char user[20], pass[20]; //variables para comparar nombre y contraseña
 
@@ -109,9 +118,11 @@ int LogIn(char username[20], char password[20])
 		exit(1);
 	}
 
-	strcpy(consulta, "SELECT JUGADOR.USERNAME,JUGADOR.CONTRASEÑA FROM JUGADOR WHERE JUGADOR.USERNAME = '");
+	strcpy(consulta, "SELECT JUGADOR.USERNAME,JUGADOR.PASSWORD FROM JUGADOR WHERE JUGADOR.USERNAME='");
 	strcat(consulta, username);
-	strcat(consulta, "'");
+	strcat(consulta, "' AND JUGADOR.PASSWORD='");
+	strcat(consulta, password);
+	strcat(consulta, "'\n");
 	printf(consulta);
 	err = mysql_query(conn, consulta);
 
@@ -123,23 +134,29 @@ int LogIn(char username[20], char password[20])
 	resultado = mysql_store_result(conn);
 	row = mysql_fetch_row(resultado);
 
-	if (row == NULL)
+	if (row == NULL) {
 		printf("No se han obtenido datos en la consulta\n");
+		return 1;
+	}
+
+
 
 	else
 	{
 		strcpy(user, row[0]);
 		strcpy(pass, row[1]);
-
-		printf("nombre recibido: %s, contra recibida: %s\n", nom, cnt);
+		printf("nombre cliente: %s, contra cliente: %s\n", username, password);
+		printf("nombre recibido: %s, contra recibida: %s\n", user, pass);
 		row = mysql_fetch_row(resultado);
-	}
-
-	if ((strcmp(user, username) == 0) && (strcmp(pass, password) == 0))
-	{
 		return 0;
 	}
 
-	else
-		return 1;
+
+	/*	if ((strcmp(user, username) == 0) && (strcmp(pass, password) == 0))*/
+	/*	{*/
+	/*		return 0;*/
+	/*	}*/
+
+		/*else return 1;*/
 }
+

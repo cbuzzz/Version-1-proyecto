@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class Form1
+    partial class Cliente
     {
         /// <summary>
         /// Variable del diseñador requerida.
@@ -42,20 +42,29 @@
             this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.textBoxUserLog = new System.Windows.Forms.TextBox();
-            this.textBoxPasswordLog = new System.Windows.Forms.TextBox();
+            this.textBoxPasswordLog1 = new System.Windows.Forms.TextBox();
             this.labelUsername = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxPasswordLog2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.buttonLogIn = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.labelNombre = new System.Windows.Forms.Label();
             this.buttonSingUp = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.buttonDelete = new System.Windows.Forms.Button();
+            this.textBoxPassDelete = new System.Windows.Forms.TextBox();
+            this.textBoxUserDelete = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -133,7 +142,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(554, 279);
+            this.groupBox1.Size = new System.Drawing.Size(554, 404);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Consultas";
@@ -200,17 +209,17 @@
             // 
             // textBoxUserLog
             // 
-            this.textBoxUserLog.Location = new System.Drawing.Point(168, 34);
+            this.textBoxUserLog.Location = new System.Drawing.Point(168, 60);
             this.textBoxUserLog.Name = "textBoxUserLog";
             this.textBoxUserLog.Size = new System.Drawing.Size(100, 22);
             this.textBoxUserLog.TabIndex = 9;
             // 
-            // textBoxPasswordLog
+            // textBoxPasswordLog1
             // 
-            this.textBoxPasswordLog.Location = new System.Drawing.Point(168, 62);
-            this.textBoxPasswordLog.Name = "textBoxPasswordLog";
-            this.textBoxPasswordLog.Size = new System.Drawing.Size(100, 22);
-            this.textBoxPasswordLog.TabIndex = 10;
+            this.textBoxPasswordLog1.Location = new System.Drawing.Point(168, 88);
+            this.textBoxPasswordLog1.Name = "textBoxPasswordLog1";
+            this.textBoxPasswordLog1.Size = new System.Drawing.Size(100, 22);
+            this.textBoxPasswordLog1.TabIndex = 10;
             // 
             // labelUsername
             // 
@@ -233,7 +242,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(29, 37);
+            this.label5.Location = new System.Drawing.Point(29, 60);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(133, 17);
             this.label5.TabIndex = 13;
@@ -242,23 +251,23 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(77, 65);
+            this.label6.Location = new System.Drawing.Point(77, 88);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(85, 17);
             this.label6.TabIndex = 14;
             this.label6.Text = "Contraseña:";
             // 
-            // textBox1
+            // textBoxPasswordLog2
             // 
-            this.textBox1.Location = new System.Drawing.Point(168, 90);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 15;
+            this.textBoxPasswordLog2.Location = new System.Drawing.Point(168, 116);
+            this.textBoxPasswordLog2.Name = "textBoxPasswordLog2";
+            this.textBoxPasswordLog2.Size = new System.Drawing.Size(100, 22);
+            this.textBoxPasswordLog2.TabIndex = 15;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 93);
+            this.label3.Location = new System.Drawing.Point(14, 116);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(148, 17);
             this.label3.TabIndex = 16;
@@ -290,34 +299,110 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.textBoxName);
+            this.groupBox3.Controls.Add(this.labelNombre);
             this.groupBox3.Controls.Add(this.buttonSingUp);
-            this.groupBox3.Controls.Add(this.textBoxPasswordLog);
+            this.groupBox3.Controls.Add(this.textBoxPasswordLog1);
             this.groupBox3.Controls.Add(this.textBoxUserLog);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.textBoxPasswordLog2);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Location = new System.Drawing.Point(12, 164);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(386, 130);
+            this.groupBox3.Size = new System.Drawing.Size(386, 149);
             this.groupBox3.TabIndex = 18;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Registrarse";
             // 
+            // textBoxName
+            // 
+            this.textBoxName.Location = new System.Drawing.Point(168, 32);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(100, 22);
+            this.textBoxName.TabIndex = 22;
+            // 
+            // labelNombre
+            // 
+            this.labelNombre.AutoSize = true;
+            this.labelNombre.Location = new System.Drawing.Point(81, 35);
+            this.labelNombre.Name = "labelNombre";
+            this.labelNombre.Size = new System.Drawing.Size(81, 17);
+            this.labelNombre.TabIndex = 21;
+            this.labelNombre.Text = "Tú nombre:";
+            // 
             // buttonSingUp
             // 
-            this.buttonSingUp.Location = new System.Drawing.Point(274, 51);
+            this.buttonSingUp.Location = new System.Drawing.Point(274, 60);
             this.buttonSingUp.Name = "buttonSingUp";
             this.buttonSingUp.Size = new System.Drawing.Size(106, 45);
             this.buttonSingUp.TabIndex = 20;
             this.buttonSingUp.Text = "Registrarse";
             this.buttonSingUp.UseVisualStyleBackColor = true;
+            this.buttonSingUp.Click += new System.EventHandler(this.buttonSingUp_Click);
             // 
-            // Form1
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.buttonDelete);
+            this.groupBox4.Controls.Add(this.textBoxPassDelete);
+            this.groupBox4.Controls.Add(this.textBoxUserDelete);
+            this.groupBox4.Controls.Add(this.label9);
+            this.groupBox4.Controls.Add(this.label10);
+            this.groupBox4.Location = new System.Drawing.Point(12, 319);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(386, 100);
+            this.groupBox4.TabIndex = 19;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Eliminar usuario";
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Location = new System.Drawing.Point(274, 35);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(106, 45);
+            this.buttonDelete.TabIndex = 20;
+            this.buttonDelete.Text = "Eliminar";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
+            // textBoxPassDelete
+            // 
+            this.textBoxPassDelete.Location = new System.Drawing.Point(168, 63);
+            this.textBoxPassDelete.Name = "textBoxPassDelete";
+            this.textBoxPassDelete.Size = new System.Drawing.Size(100, 22);
+            this.textBoxPassDelete.TabIndex = 10;
+            // 
+            // textBoxUserDelete
+            // 
+            this.textBoxUserDelete.Location = new System.Drawing.Point(168, 35);
+            this.textBoxUserDelete.Name = "textBoxUserDelete";
+            this.textBoxUserDelete.Size = new System.Drawing.Size(100, 22);
+            this.textBoxUserDelete.TabIndex = 9;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(29, 35);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(133, 17);
+            this.label9.TabIndex = 13;
+            this.label9.Text = "Nombre de usuario:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(76, 63);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(85, 17);
+            this.label10.TabIndex = 14;
+            this.label10.Text = "Contraseña:";
+            // 
+            // Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(963, 300);
+            this.ClientSize = new System.Drawing.Size(963, 425);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -325,8 +410,8 @@
             this.Controls.Add(this.IP);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Cliente";
+            this.Text = "Cliente";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -334,6 +419,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,18 +441,26 @@
         private System.Windows.Forms.TextBox textBoxUsername;
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.TextBox textBoxUserLog;
-        private System.Windows.Forms.TextBox textBoxPasswordLog;
+        private System.Windows.Forms.TextBox textBoxPasswordLog1;
         private System.Windows.Forms.Label labelUsername;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxPasswordLog2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button buttonLogIn;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button buttonSingUp;
         private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.Label labelNombre;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.TextBox textBoxPassDelete;
+        private System.Windows.Forms.TextBox textBoxUserDelete;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
     }
 }
 

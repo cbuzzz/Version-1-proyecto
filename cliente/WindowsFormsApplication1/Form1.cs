@@ -11,10 +11,10 @@ using System.Net.Sockets;
 
 namespace WindowsFormsApplication1
 {
-    public partial class Form1 : Form
+    public partial class Cliente : Form
     {
         Socket server;
-        public Form1()
+        public Cliente()
         {
             InitializeComponent();
         }
@@ -107,22 +107,93 @@ namespace WindowsFormsApplication1
             else
             {
                 //string mensaje = "1/" + parameter.Text;
-                SQL_query = "1/"+user+"/"+pass;
+                SQL_query = "1/"+user+"/"+pass+"/NULL";
                 byte[] SQLserver = System.Text.Encoding.ASCII.GetBytes(SQL_query);                              
                 server.Send(SQLserver);
-                byte[] msg2 = new byte[80];
+                byte[] msg2 = new byte[200];
                 server.Receive(msg2);
-                answer = Encoding.ASCII.GetString(msg2);
+                answer = Encoding.ASCII.GetString(msg2).Split('\0')[0] ;
                 //int answerint = Convert.ToInt32(answer);
-                if (answer == "0")
+                if (answer == "Si")
                 {
-                    MessageBox.Show("Bienvenido" + user + ", has iniciado sesión correctamente");
+                    MessageBox.Show("Bienvenido " + user + ", has iniciado sesión correctamente");
+                    textBoxUsername.Text = "";
+                    textBoxPassword.Text =  "";
                 }
-                else if (answer == "1")
+                else if (answer == "No")
                 {
                     MessageBox.Show("El nombre de usuario o contraseña son incorrectos o no existen");
                 }
                 
+            }
+        }
+
+        private void buttonSingUp_Click(object sender, EventArgs e)
+        {
+            string name = textBoxName.Text;
+            string user = textBoxUserLog.Text;
+            string pass1 = textBoxPasswordLog1.Text;
+            string pass2 = textBoxPasswordLog2.Text;
+            string SQL_query;
+            string answer;
+            if (user == "" || pass1 == "" || pass2 == "")
+            {
+                MessageBox.Show("Por favor, rellene todos los campos");
+            }
+            else if(pass1 != pass2) MessageBox.Show("Las contraseñas no coinciden");
+            else
+            {
+                //string mensaje = "1/" + parameter.Text;
+                SQL_query = "3/" + name + "/" + user + "/" + pass1;
+                byte[] SQLserver = System.Text.Encoding.ASCII.GetBytes(SQL_query);
+                server.Send(SQLserver);
+                byte[] msg2 = new byte[200];
+                server.Receive(msg2);
+                answer = Encoding.ASCII.GetString(msg2).Split('\0')[0];
+                //int answerint = Convert.ToInt32(answer);
+                if (answer == "Si")
+                {
+                    MessageBox.Show("Bienvenido " + user + ", te has registrado correctamente");
+                    textBoxName.Text = "";
+                    textBoxUserLog.Text = "";
+                    textBoxPasswordLog1.Text = "";
+                    textBoxPasswordLog2.Text = "";
+                }
+                else if (answer == "No")
+                {
+                    MessageBox.Show("Ha ocurrido un error al registrarse");
+                }
+
+            }
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            string user = textBoxUserDelete.Text;
+            string pass = textBoxPassDelete.Text;
+            string SQL_query;
+            string answer;
+            if (user == "" || pass == "")
+            {
+                MessageBox.Show("Por favor, rellene todos los campos");
+            }
+            SQL_query = "2/" + user + "/" + pass;
+            byte[] SQLserver = System.Text.Encoding.ASCII.GetBytes(SQL_query);
+            server.Send(SQLserver);
+            byte[] msg2 = new byte[200];
+            server.Receive(msg2);
+            answer = Encoding.ASCII.GetString(msg2).Split('\0')[0];
+            //int answerint = Convert.ToInt32(answer);
+            if (answer == "Si")
+            {
+                MessageBox.Show("El usuario " + user + " ha sido eliminado correctamente");
+          
+                textBoxUserDelete.Text = "";
+                textBoxPassDelete.Text = "";
+            }
+            else if (answer == "No")
+            {
+                MessageBox.Show("Ha ocurrido un error al registrarse");
             }
         }
     }

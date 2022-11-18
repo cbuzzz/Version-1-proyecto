@@ -11,8 +11,6 @@ CREATE TABLE JUGADOR (
 
  USERNAME VARCHAR(50),
 
- ID_TEAM INT NOT NULL,
-
  PRIMARY KEY (ID) -- aqui sobraba una coma con lo cual SQL no compilaba y la tabla no se creaba
 
 
@@ -51,21 +49,6 @@ CREATE TABLE JUGADORPARTIDA (
 
 );
 
-
-
-CREATE TABLE EQUIPOS (
-
-    ID INT NOT NULL,
-
-    TEAMNAME VARCHAR(60),
-
-    USER_LIDER VARCHAR(60),
-
-    COLOR VARCHAR(60),
-
-    PRIMARY KEY(ID)
-
-);
 
 
 CREATE TABLE cartas ( -- ojo! estabas haciendo los inserts a la tabla cartas en vez de carta, he puesto la s aqui porque era mas rapido que no cambiar todos los inserts
@@ -140,11 +123,6 @@ INSERT INTO cartas VALUES ('gitanada', 1, 'roba 20 monedas a el enemigo que tu e
 INSERT INTO cartas VALUES ('volando gente' , 10, 'avanza hasta la casilla del tablero que quieras' , 'premium', 'posicion');
 INSERT INTO cartas VALUES ('entre rejas' , 22, 'vas a la carcel durante 3 turnos , con una determinada posibilidad de salir', 'camara oculta' , 'posicion');
 INSERT INTO cartas VALUES ('un pasito para atras' , 45 , 'retrocede 3 casillas' , 'malo' , 'posicion'); -- te habias dejado el nombre de la tabla
-
-
-INSERT INTO EQUIPOS VALUES (1, 'ROJOS', 'monicagamer', 'ROJO');
-
-INSERT INTO EQUIPOS VALUES (2, 'JUGONES', 'mark777', 'VERDE');
 
 
 

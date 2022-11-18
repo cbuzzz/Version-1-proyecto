@@ -106,8 +106,13 @@ namespace WindowsFormsApplication1
             }
             else
             {
+<<<<<<< HEAD
                 //string mensaje = "1/" + parameter.Text;
                 SQL_query = "1/"+user+"/"+pass+"/NULL";
+=======
+                string mensaje = "1/" + parameter.Text;
+                SQL_query = "1/"+user+"/"+pass;
+>>>>>>> 63f6627a6556d8fdb49ae6b8357a5905074171d2
                 byte[] SQLserver = System.Text.Encoding.ASCII.GetBytes(SQL_query);                              
                 server.Send(SQLserver);
                 byte[] msg2 = new byte[200];
